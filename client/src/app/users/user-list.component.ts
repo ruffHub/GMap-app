@@ -12,7 +12,6 @@ import {FormControl} from '@angular/forms';
 })
 export class UserListComponent implements OnInit {
     users: Observable<User[]>;
-    test: Observable<any>;
     public search: FormControl = new FormControl();
 
     constructor(private service: UserService) {

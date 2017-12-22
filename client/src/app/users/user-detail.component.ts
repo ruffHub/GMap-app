@@ -13,8 +13,8 @@ import any = jasmine.any;
     providers: [MapService]
 })
 export class UserDetailComponent implements OnInit {
-    // @HostBinding('style.display') display = 'block';
-    @HostBinding('style.position') position = 'absolute';
+    @HostBinding('style.display') display = 'block';
+    // @HostBinding('style.position') position = 'absolute';
     isEditState: boolean = false;
     list: Array<IMarker> = [];
     user: User;

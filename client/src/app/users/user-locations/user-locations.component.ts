@@ -5,18 +5,19 @@ import {ActivatedRoute, ParamMap, Params} from '@angular/router';
 import {FormControl} from '@angular/forms';
 import {MapService, IMarker} from "../../map/map.service";
 import {UserService} from "../user.service";
+import {UserLocationsService} from "./user-locations.service";
 
 @Component({
     templateUrl: './user-locations.component.html',
     styleUrls: ['./user-locations.css'],
-    providers: [MapService, UserService]
+    providers: [MapService, UserService, UserLocationsService]
 })
 export class UserLocationsComponent implements OnInit {
-
-    list: Array<IMarker> = [];
+    // list: Array<IMarker> = [];
 
     constructor(public mapService: MapService,
                 public userService: UserService,
+                public UserLocationsService: UserLocationsService,
                 public ref: ChangeDetectorRef) {
     }
 
@@ -33,9 +34,9 @@ export class UserLocationsComponent implements OnInit {
 
         this.userService.getLocations(currentUser.id).subscribe(
             markers => {
-                this.list = markers;
+                // this.list = markers;
 
-                this.list.forEach((item) => {
+                markers.forEach((item:IMarker) => {
                     this.mapService.add(item);
                 });
             },
@@ -43,7 +44,7 @@ export class UserLocationsComponent implements OnInit {
         );
     }
 
-    save(id: number | string, item: IMarker) {
-        console.log(item);
+    save(item:any) {
+        this.UserLocationsService.createLocation(item).subscribe();
     };
 }

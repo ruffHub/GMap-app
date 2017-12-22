@@ -1,4 +1,21 @@
-.GMap {
-    width: 100%;
-    height: 300px;
+.about .flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.about .photo,
+.about .info {
+    width: 50%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: grey;
+}
+ul {
+    list-style: none;
+    padding: 0;
 }

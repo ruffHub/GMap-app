@@ -1,8 +1,6 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
-import {ElementRef} from '@angular/core';
-import {} from '@types/googlemaps';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {MapService} from "./map.service";
-import Marker = google.maps.Marker;
+import any = jasmine.any;
 
 type Pos = { lat: number; lng: number };
 type userMark = { name: string; lat: number; lng: number };
@@ -10,7 +8,7 @@ type userMark = { name: string; lat: number; lng: number };
 @Component({
     selector: 'g-map',
     templateUrl: './map.component.html',
-    styleUrls: ['./map.component.css']
+    styleUrls: ['./map.component.css'],
 })
 export class MapComponent implements OnInit, AfterViewInit {
     @ViewChild('mapCanvas') mapCanvas: ElementRef;
@@ -39,13 +37,14 @@ export class MapComponent implements OnInit, AfterViewInit {
 
         this.mapService.onChange(() => {
             this.markers.forEach((marker) => {
+
                 marker.setMap(null);
             });
+
             this.markers = [];
             this.mapService.getList().forEach((marker) => {
                 this.markers.push(new google.maps.Marker({
                     position: marker,
-                    draggable: true,
                     map: this.map
                 }));
             });

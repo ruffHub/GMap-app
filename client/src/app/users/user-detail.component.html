@@ -1,17 +1,17 @@
-<div class="wrapper" style="width: 100%;">
+<div class="user-detail">
     <g-map [mapService]="mapService"></g-map>
     <h2>User</h2>
     <div *ngIf="user">
         <h3>"{{ user.name }}" with id {{user.id}}</h3>
 
         <div class="nav">
-            <button (click)="goToUsers(user)">Back</button>
+            <a (click)="goToUsers(user)" href="#">Back</a>
         </div>
 
         <div class="pic">
             <p>
-                <button (click)="toggleEditState()">Edit</button>
-                <button (click)="delete()">Delete</button>
+                <a (click)="toggleEditState()" href="#">Edit</a>
+                <a (click)="delete()" href="#">Delete</a>
             </p>
         </div>
 
@@ -43,8 +43,8 @@
 
                 <dt></dt>
                 <dd [hidden]="!isEditState">
-                    <button type="submit">Save</button>
-                    <button type="submit" (click)="toggleEditState()">Cancel</button>
+                    <a type="submit">Save</a>
+                    <a type="submit" (click)="toggleEditState()">Cancel</a>
                 </dd>
             </dl>
         </form>

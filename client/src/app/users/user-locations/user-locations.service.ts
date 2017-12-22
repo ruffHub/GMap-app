@@ -9,27 +9,30 @@ import {MapService, IMarker} from "../../map/map.service";
 @Injectable()
 export class UserLocationsService {
     private userUrl = 'http://localhost:8000/api/v1/';
-    // newLocation = {
-    //     token: string,
-    //     userId: string,
-    //     data: {
-    //         name?: string,
-    //         type?: string,
-    //         lat: number,
-    //         lng: 51
-    //     }
-    // }
+    private currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
     constructor(private http: Http,
                 public mapService: MapService,
                 private ref: ChangeDetectorRef) {
     }
 
-    save(id: number | string, item: IMarker) {
+    public createLocation(marker:any) {
 
-        return this.http.get(`${this.userUrl}locations/${+id}`)
-            .map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+        const newLocation = {
+            token: 'this.currentUser.token',
+            userId: this.currentUser.id,
+            data: {
+                name: marker.name || '',
+                type: marker.name || '',
+                lat: marker.lat,
+                lng: marker.lng
+            }
+        };
+
+        console.log(newLocation);
+        return this.http.post(`${this.userUrl}locations/`, newLocation)
+            .map((res: Response) => console.log(res.json()))
+            .catch((error: any) => console.log(error) || 'Server error');
     }
 
 }
