@@ -1,0 +1,13 @@
+<div>
+    <g-map [mapService]="mapService"></g-map>
+    <div>
+        <div *ngFor="let item of mapService.getList()" class="item">
+            <div>ID: {{item.id}}</div>
+            <div>LAT: {{item.lat}} - LNG: {{item.lng}}</div>
+            <div>
+                <input type="text" [(ngModel)]="item.title">
+            </div>
+            <button (click)="save(item)" >Save</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<h2>Users</h2>
+<input type="text" [formControl]="search">
+<ul class="items">
+    <li *ngFor="let user of users | async">
+        <a [routerLink]="['/user', user.id]">{{ user.name }}</a>
+    </li>
+</ul>

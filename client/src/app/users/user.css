@@ -1,0 +1,14 @@
+* {
+    width: 1000px;
+    color: #312852;
+}
+.detail,
+.wrapper {
+    width: 1000px ;
+}
+a {
+    text-decoration: none;
+}
+a:visited {
+    color: grey;
+}

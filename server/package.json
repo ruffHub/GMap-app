@@ -1,0 +1,30 @@
+{
+  "name": "express-start",
+  "version": "1.0.0",
+  "description": "Started with Express",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
+  },
+  "keywords": [],
+  "author": "Tim miller",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "latest",
+    "consolidate": "^0.13.1",
+    "express": "^4.13.1",
+    "express-joi-validator": "^2.0.0",
+    "handlebars": "^3.0.3",
+    "joi": "^13.0.2",
+    "jsonwebtoken": "^7.1.9",
+    "lodash": "^3.10.0",
+    "sequelize": "^3.23.6",
+    "sequelize-cli": "^3.1.0",
+    "sqlite3": "^3.1.13"
+  },
+  "devDependencies": {
+    "nodemon": "^1.3.7"
+  }
+}

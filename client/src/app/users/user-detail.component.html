@@ -1,0 +1,53 @@
+<div class="wrapper" style="width: 100%;">
+    <g-map [mapService]="mapService"></g-map>
+    <h2>User</h2>
+    <div *ngIf="user">
+        <h3>"{{ user.name }}" with id {{user.id}}</h3>
+
+        <div class="nav">
+            <button (click)="goToUsers(user)">Back</button>
+        </div>
+
+        <div class="pic">
+            <p>
+                <button (click)="toggleEditState()">Edit</button>
+                <button (click)="delete()">Delete</button>
+            </p>
+        </div>
+
+        <form (submit)="save()" #userForm="ngForm">
+            <dl>
+                <dt>Name</dt>
+                <dd [hidden]="isEditState">{{user.name}}</dd>
+                <dd [hidden]="!isEditState">
+                    <input type="text" title="name" [(ngModel)]="user.name" name="name"/>
+                </dd>
+
+                <dt>Age</dt>
+                <dd [hidden]="isEditState">{{user.age}}</dd>
+                <dd [hidden]="!isEditState">
+                    <input type="number" title="age" [(ngModel)]="user.age" name="age"/>
+                </dd>
+
+                <dt>Address</dt>
+                <dd [hidden]="isEditState">{{user.address}}</dd>
+                <dd [hidden]="!isEditState">
+                    <input type="text" title="address" [(ngModel)]="user.address" name="address"/>
+                </dd>
+
+                <dt>Favorite fruit</dt>
+                <dd [hidden]="isEditState">{{user.fruit}}</dd>
+                <dd [hidden]="!isEditState">
+                    <input type="text" title="fruit" [(ngModel)]="user.fruit" name="fruit"/>
+                </dd>
+
+                <dt></dt>
+                <dd [hidden]="!isEditState">
+                    <button type="submit">Save</button>
+                    <button type="submit" (click)="toggleEditState()">Cancel</button>
+                </dd>
+            </dl>
+        </form>
+    </div>
+</div>
+

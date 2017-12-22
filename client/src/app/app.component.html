@@ -1,0 +1,9 @@
+<main>
+    <div class="menu">
+        <a routerLink="/">Users</a>
+        <a routerLink="/about">About</a>
+        <a routerLink="/user/locations" *ngIf="isLogged()">My locations</a>
+        <a routerLink="/login" class="login">logIn/LogOut</a>
+    </div>
+</main>
+<router-outlet></router-outlet>
