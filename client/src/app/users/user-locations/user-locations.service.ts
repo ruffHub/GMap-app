@@ -1,9 +1,7 @@
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import {ChangeDetectorRef, Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Http, RequestOptionsArgs, Response} from '@angular/http';
-import {ResponseContentType} from '@angular/http/src/enums';
+import {Http, Response} from '@angular/http';
 import {MapService, IMarker} from "../../map/map.service";
 
 @Injectable()
@@ -52,8 +50,8 @@ export class UserLocationsService {
 
     public deleteLocation(marker: IMarker) {
         const reqBody = {
-            token: this.currentUser.token,
-            id: marker.id
+            "token": this.currentUser.token,
+            "id": marker.id
         };
         console.log(reqBody);
 

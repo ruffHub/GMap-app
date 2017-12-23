@@ -13,7 +13,7 @@ function verifyToken(req, res, next) {
 			}
 		});
 	} else {
-		res.redirect('/api/v1/auth');
+		res.status(403).send('error');
 	}
 }
 

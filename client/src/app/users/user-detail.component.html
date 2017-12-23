@@ -11,40 +11,35 @@
 
         <div class="pic">
             <p>
-                <button (click)="toggleEditState()" >Edit</button>
-                <button (click)="delete()" >Delete</button>
+                <button (click)="toggleEditState()">Edit</button>
+                <button (click)="delete()">Delete</button>
             </p>
         </div>
 
         <form (submit)="save()" #userForm="ngForm">
             <dl>
-                <dt class="head">Name</dt>
-                <dd [hidden]="isEditState">{{user.name}}</dd>
-                <dd [hidden]="!isEditState">
-                    <input type="text" title="name" [(ngModel)]="user.name" name="name"/>
-                </dd>
+                <dt class="head">Name:</dt>
+                <dd [hidden]="!isEditState"> You can`t change name, because its a login and must be unique</dd>
+                <dd [hidden]="isEditState">- {{user.name}}</dd>
+                <!--<dd [hidden]="!isEditState">-->
+                <!--<input type="text" title="name" [(ngModel)]="user.name" name="name"/>-->
+                <!--</dd>-->
 
-                <dt class="head">Age</dt>
-                <dd [hidden]="isEditState">{{user.age}}</dd>
+                <dt class="head">Age: <span [hidden]="!isEditState">(must be larger then 18)</span></dt>
+                <dd [hidden]="isEditState">- {{user.age}}</dd>
                 <dd [hidden]="!isEditState">
                     <input type="number" title="age" [(ngModel)]="user.age" name="age"/>
                 </dd>
 
-                <dt class="head">Address</dt>
-                <dd [hidden]="isEditState">{{user.address}}</dd>
-                <dd [hidden]="!isEditState">
-                    <input type="text" title="address" [(ngModel)]="user.address" name="address"/>
-                </dd>
-
-                <dt class="head">Occupation</dt>
-                <dd [hidden]="isEditState">{{user.occupation}}</dd>
+                <dt class="head">Occupation: <span [hidden]="!isEditState">(max length 30 symbols) </span></dt>
+                <dd [hidden]="isEditState">- {{user.occupation}}</dd>
                 <dd [hidden]="!isEditState">
                     <input type="text" title="occupation" [(ngModel)]="user.occupation" name="occupation"/>
                 </dd>
 
                 <dt></dt>
                 <dd [hidden]="!isEditState">
-                    <a type="submit">Save</a>
+                    <a type="submit" (click)="save()">Save</a>
                     <a type="submit" (click)="toggleEditState()">Cancel</a>
                 </dd>
             </dl>

@@ -5,12 +5,12 @@ POST http://localhost:8000/api/v1/auth/
 Content-Type: application/json
 
 {
-    "name": "Test",
-    "password": "pass"
+    "name": "admin",
+    "password": "admin"
 }
 
 ###
 
-GET http://localhost:8000/api/v1/users/2
+GET http://localhost:8000/api/v1/users/
 
 ###

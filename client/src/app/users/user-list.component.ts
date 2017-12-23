@@ -1,8 +1,6 @@
-// TODO SOMEDAY: Feature Componetized like CrisisCenter
 import 'rxjs/add/operator/switchMap';
 import {Observable} from 'rxjs/Observable';
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap} from '@angular/router';
 import {User, UserService} from './user.service';
 import {FormControl} from '@angular/forms';
 

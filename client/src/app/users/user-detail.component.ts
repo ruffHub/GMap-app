@@ -1,10 +1,9 @@
 import 'rxjs/add/operator/switchMap';
 import {Component, OnInit, HostBinding, ChangeDetectorRef} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Router, ActivatedRoute, ParamMap, Params} from '@angular/router';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 import {User, UserService} from './user.service';
 import {MapService, IMarker} from "../map/map.service";
-import any = jasmine.any;
+import {AlertService} from "../alert/alert.service";
 
 @Component({
     selector: 'detail',
@@ -23,6 +22,7 @@ export class UserDetailComponent implements OnInit {
                 private router: Router,
                 private service: UserService,
                 public mapService: MapService,
+                public alertService: AlertService,
                 public ref: ChangeDetectorRef) {
     }
 
@@ -55,12 +55,22 @@ export class UserDetailComponent implements OnInit {
 
     save() {
         this.service.updateUser(this.user)
-            .subscribe();
+            .subscribe(
+                result => {
+                    this.alertService.success("success");
+                    this.toggleEditState();
+                },
+                err => console.log(err)
+            );
     }
 
     delete() {
         this.service.deleteUser(this.user)
-            .subscribe();
+            .subscribe(result => {
+                    this.router.navigate(['/users']);
+                },
+                err => console.log(err)
+            );
     }
 
     loadMarkers(params: Params) {

@@ -1,8 +1,5 @@
 import 'rxjs/add/operator/switchMap';
-import {Observable} from 'rxjs/Observable';
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Params} from '@angular/router';
-import {FormControl} from '@angular/forms';
 import {MapService, IMarker} from "../../map/map.service";
 import {UserService} from "../user.service";
 import {UserLocationsService} from "./user-locations.service";
@@ -14,6 +11,7 @@ import {UserLocationsService} from "./user-locations.service";
 })
 export class UserLocationsComponent implements OnInit {
     item: any = {};
+
     constructor(public mapService: MapService,
                 public userService: UserService,
                 public UserLocationsService: UserLocationsService,
@@ -32,7 +30,7 @@ export class UserLocationsComponent implements OnInit {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.userService.getLocations(currentUser.id).subscribe(
             markers => {
-                markers.forEach((item:IMarker) => {
+                markers.forEach((item: IMarker) => {
                     this.mapService.add(item);
                 });
             },

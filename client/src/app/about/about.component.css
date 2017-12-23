@@ -6,16 +6,20 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    align-items: baseline;
+    margin-top: 35px;
 }
-.about .photo,
+
+.about .created-by,
 .about .info {
     width: 50%;
 }
-.about .photo img {
-    width: 200px;
-    height: auto;
-    border-radius: 50%;
+
+.about .head {
+    font-size: 20px;
+    font-weight: 600;
 }
+
 a {
     text-decoration: none;
 }
@@ -23,15 +27,37 @@ a {
 a:visited {
     color: grey;
 }
+
 ul {
     list-style: none;
     padding: 0;
+    margin-top: 15px;
 }
+
+li {
+    color: #312852;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
 a:hover,
 button:hover {
     box-shadow: 0 0 6px 0 rgba(64, 57, 31, 0.7);
 }
-.info {
+
+.about .info {
     font-size: 16px;
     font-weight: 400;
+}
+
+.about .created-by {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.about .created-by .head {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }

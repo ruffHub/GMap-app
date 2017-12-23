@@ -3,6 +3,7 @@
     cursor: pointer;
     color: #312852;
 }
+
 button {
     margin-right: 15px;
     display: inline-block;
@@ -17,18 +18,22 @@ button {
     transition: box-shadow 0.4s;
     margin-bottom: 10px;
 }
+
 button:hover {
     box-shadow: 0 0 6px 0 rgba(64, 57, 31, 0.7);
 }
+
 input {
-border: 1px solid grey;
-width: 200px;
-height: 30px;
-margin-bottom: 10px;
+    border: 1px solid grey;
+    width: 200px;
+    height: 30px;
+    margin-bottom: 10px;
 }
+
 label {
     display: block;
 }
+
 *[_ngcontent-c1] {
     font-weight: 600;
     cursor: pointer;
@@ -36,4 +41,9 @@ label {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+span.hint {
+    font-size: 14px;
+    font-weight: 400;
 }

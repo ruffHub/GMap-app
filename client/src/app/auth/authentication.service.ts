@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, Response} from '@angular/http';
+import {Http, Response} from '@angular/http';
 import {Location} from '@angular/common';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
+import {AlertService} from "../alert/alert.service";
+import {Router} from "@angular/router";
 
 export type newUser = {
     name: string,
@@ -17,7 +19,10 @@ export class AuthenticationService {
     protected _isAuthorised = false;
 
 
-    constructor(private http: Http, private location: Location) {
+    constructor(private http: Http,
+                private router: Router,
+                private location: Location,
+                private alertService: AlertService) {
         this._isAuthorised = !!localStorage.getItem('currentUser');
     }
 
@@ -38,8 +43,9 @@ export class AuthenticationService {
         if (user && user.token) {
             localStorage.setItem('currentUser', JSON.stringify(user));
             this._isAuthorised = true;
-            this.location.go('/users');
+            this.router.navigate(['/users']);
         }
+        this.alertService.success("success");
         console.log(user);
         return user;
     }
@@ -53,7 +59,10 @@ export class AuthenticationService {
         return this
             .http
             .post('http://localhost:8000/api/v1/auth', {name: name, password: password})
-            .map((response: Response) => this.authorize(response.json()));
+            .map((response: Response) => this.authorize(response.json()))
+            .catch((error: any) => {
+                return Observable.of(error)
+            });
     }
 
     public register(newUser: newUser) {

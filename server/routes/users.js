@@ -1,7 +1,8 @@
-const models = require('../models');
-const express = require('express');
-const verifyToken = require('../middleware/verify_token');
-const router = express.Router();
+const
+  models = require('../models'),
+  express = require('express'),
+  verifyToken = require('../middleware/verify_token'),
+  router = express.Router();
 
 router.get('/', (req, res) => {
 	models.User
@@ -25,17 +26,15 @@ router.get('/:id', (req, res) => {
 });
 
 router.put('/', verifyToken, (req, res) => {
-	const id = req.decoded.id;
-
 	models.User
-	  .update(req.body.data, {where: {id: id}})
+	  .update(req.body.data, {where: {id: req.body.id}})
 	  .then(user => res.json(user))
 	  .catch(err => res.status(404).send('User not found.'));
 });
 
-router.delete('/:id', verifyToken, (req, res) => {
+router.delete('/', verifyToken, (req, res) => {
 	models.User
-	  .destroy({where: {id: req.params.id}})
+	  .destroy({where: {id: req.body.id}})
 	  .then(user => res.json(user))
 	  .catch(err => res.status(404).send('User not found.'));
 });

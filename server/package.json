@@ -16,7 +16,6 @@
     "consolidate": "^0.13.1",
     "express": "^4.13.1",
     "express-joi-validator": "^2.0.0",
-    "handlebars": "^3.0.3",
     "joi": "^6.0.0",
     "jsonwebtoken": "^7.1.9",
     "lodash": "^3.10.0",
