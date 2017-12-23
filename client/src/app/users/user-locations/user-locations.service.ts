@@ -16,22 +16,49 @@ export class UserLocationsService {
                 private ref: ChangeDetectorRef) {
     }
 
-    public createLocation(marker:any) {
+    public createLocation(marker: any) {
 
         const newLocation = {
-            token: 'this.currentUser.token',
+            token: this.currentUser.token,
             userId: this.currentUser.id,
             data: {
-                name: marker.name || '',
-                type: marker.name || '',
+                name: marker.name,
+                type: marker.name,
                 lat: marker.lat,
                 lng: marker.lng
             }
         };
-
-        console.log(newLocation);
         return this.http.post(`${this.userUrl}locations/`, newLocation)
-            .map((res: Response) => console.log(res.json()))
+            .map((res: Response) => console.log(res))
+            .catch((error: any) => console.log(error) || 'Server error');
+    }
+
+    public updateLocation(marker: any) {
+
+        const newLocation = {
+            token: this.currentUser.token,
+            id: marker.id,
+            data: {
+                name: marker.name,
+                type: marker.name,
+                lat: marker.lat,
+                lng: marker.lng
+            }
+        };
+        return this.http.put(`${this.userUrl}locations/`, newLocation)
+            .map((res: Response) => console.log(res))
+            .catch((error: any) => console.log(error) || 'Server error');
+    }
+
+    public deleteLocation(marker: IMarker) {
+        const reqBody = {
+            token: this.currentUser.token,
+            id: marker.id
+        };
+        console.log(reqBody);
+
+        return this.http.delete(`${this.userUrl}locations/`, reqBody)
+            .map((res: Response) => console.log(res))
             .catch((error: any) => console.log(error) || 'Server error');
     }
 

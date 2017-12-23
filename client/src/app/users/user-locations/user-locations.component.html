@@ -2,12 +2,19 @@
     <g-map [mapService]="mapService"></g-map>
     <div>
         <div *ngFor="let item of mapService.getList()" class="item">
-            <div>ID: {{item.id}}</div>
-            <div>LAT: {{item.lat}} - LNG: {{item.lng}}</div>
+            <div class="id">id: {{item.id || 'new'}}</div>
             <div>
-                <input type="text" [(ngModel)]="item.title">
+                <input type="text" [(ngModel)]="item.name">
             </div>
-            <button (click)="save(item)" >Save</button>
+            <div class="coord">
+                lat: {{item.lat}} <br>
+                lng: {{item.lng}}
+            </div>
+            <div class="controls">
+                <button (click)="save(item)">Save new</button>
+                <button (click)="update(item)">Edit</button>
+                <button (click)="delete(item)">Delete</button>
+            </div>
         </div>
     </div>
 </div>

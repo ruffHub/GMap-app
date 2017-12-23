@@ -11,6 +11,8 @@ import {LoginComponent} from "./auth/login.component";
 import {AuthenticationService} from "./auth/authentication.service";
 import {MapsModule} from "./map/maps.module";
 import {RegisterComponent} from "./auth/register.component";
+import {AlertComponent} from "./alert/alert.component";
+import {AlertService} from "./alert/alert.service";
 
 @NgModule({
     imports: [
@@ -26,10 +28,12 @@ import {RegisterComponent} from "./auth/register.component";
         PageNotFoundComponent,
         AboutComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        AlertComponent
     ],
     providers: [
-        AuthenticationService
+        AuthenticationService,
+        AlertService
     ],
     bootstrap: [AppComponent]
 })

@@ -36,3 +36,48 @@ ul {
     box-shadow: 0 0 4px 0 rgba(155, 155, 155, 0.3);
     transition: box-shadow 0.4s;
 }
+
+* {
+    font-weight: 600;
+    cursor: pointer;
+    color: #312852;
+}
+
+button {
+    margin-right: 15px;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    color: #312852;
+    background-color: #F8E71C;
+    box-shadow: 0 0 4px 0 rgba(155, 155, 155, 0.3);
+    transition: box-shadow 0.4s;
+    margin-bottom: 10px;
+}
+a:hover,
+button:hover {
+    box-shadow: 0 0 6px 0 rgba(64, 57, 31, 0.7);
+}
+
+input {
+    border: 1px solid grey;
+    width: 200px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+dd {
+    margin-left: 0;
+    margin-bottom: 5px;
+    padding-bottom: 15px;
+}
+.nav {
+    margin-top: 10px;
+}
+li {
+    margin-bottom: 5px;
+    font-size: 20px;
+}

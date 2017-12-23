@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService } from './authentication.service';
-// import { AlertService, AuthenticationService } from './authentication.service';
+import {AlertService} from "../alert/alert.service";
 
 @Component({
-    templateUrl: 'login.component.html'
+    templateUrl: 'login.component.html',
+    styleUrls: ['./auth.css']
 })
 
 export class LoginComponent implements OnInit {
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
+        private alertService: AlertService
     ) { }
 
     ngOnInit() {
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.name, this.model.password)
             .subscribe(
                 data => {
+                    this.alertService.success(data.token);
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {

@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
 
 @Component({
-    templateUrl: './register.component.html'
+    templateUrl: './register.component.html',
+    styleUrls: ['./auth.css']
 })
 
 export class RegisterComponent {

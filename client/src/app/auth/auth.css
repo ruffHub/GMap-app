@@ -3,16 +3,7 @@
     cursor: pointer;
     color: #312852;
 }
-a {
-    text-decoration: none;
-}
-main {
-    padding: 1em;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    display: block;
-}
-.menu a {
+button {
     margin-right: 15px;
     display: inline-block;
     padding: 5px 10px;
@@ -24,16 +15,25 @@ main {
     background-color: #F8E71C;
     box-shadow: 0 0 4px 0 rgba(155, 155, 155, 0.3);
     transition: box-shadow 0.4s;
+    margin-bottom: 10px;
 }
-
-.menu a:hover {
+button:hover {
     box-shadow: 0 0 6px 0 rgba(64, 57, 31, 0.7);
 }
-.menu {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+input {
+border: 1px solid grey;
+width: 200px;
+height: 30px;
+margin-bottom: 10px;
 }
-.menu .login {
-    margin-left: auto;
+label {
+    display: block;
+}
+*[_ngcontent-c1] {
+    font-weight: 600;
+    cursor: pointer;
+    color: #312852;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

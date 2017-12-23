@@ -13,8 +13,7 @@ import {UserLocationsService} from "./user-locations.service";
     providers: [MapService, UserService, UserLocationsService]
 })
 export class UserLocationsComponent implements OnInit {
-    // list: Array<IMarker> = [];
-
+    item: any = {};
     constructor(public mapService: MapService,
                 public userService: UserService,
                 public UserLocationsService: UserLocationsService,
@@ -31,11 +30,8 @@ export class UserLocationsComponent implements OnInit {
 
     load() {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
         this.userService.getLocations(currentUser.id).subscribe(
             markers => {
-                // this.list = markers;
-
                 markers.forEach((item:IMarker) => {
                     this.mapService.add(item);
                 });
@@ -44,7 +40,15 @@ export class UserLocationsComponent implements OnInit {
         );
     }
 
-    save(item:any) {
+    save(item: IMarker) {
         this.UserLocationsService.createLocation(item).subscribe();
+    };
+
+    update(item: IMarker) {
+        this.UserLocationsService.updateLocation(item).subscribe();
+    };
+
+    delete(item: IMarker) {
+        this.UserLocationsService.deleteLocation(item).subscribe();
     };
 }

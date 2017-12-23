@@ -1,3 +1,7 @@
+* {
+    color: #312852;
+}
+
 .about .flex {
     display: flex;
     flex-direction: row;
@@ -7,7 +11,11 @@
 .about .info {
     width: 50%;
 }
-
+.about .photo img {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+}
 a {
     text-decoration: none;
 }
@@ -18,4 +26,12 @@ a:visited {
 ul {
     list-style: none;
     padding: 0;
+}
+a:hover,
+button:hover {
+    box-shadow: 0 0 6px 0 rgba(64, 57, 31, 0.7);
+}
+.info {
+    font-size: 16px;
+    font-weight: 400;
 }

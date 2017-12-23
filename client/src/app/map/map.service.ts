@@ -12,6 +12,7 @@ export interface IMarker {
     lng: number,
     title?: string,
     id?: number,
+    name?: string,
     type?: number,
     user_id?: number
 }
