@@ -1,6 +1,8 @@
 import 'rxjs/add/operator/switchMap';
 import {Component, OnInit, HostBinding, ChangeDetectorRef} from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import {Router, ActivatedRoute, ParamMap, Params} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import any = jasmine.any;
 import {User, UserService} from './user.service';
 import {MapService, IMarker} from "../map/map.service";
 import {AlertService} from "../alert/alert.service";
@@ -28,10 +30,6 @@ export class UserDetailComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe((params: Params) => this.loadUser(params));
-
-        // this.mapService.onAddMarkerFromMap(() => {
-        //     this.ref.detectChanges();
-        // });
 
         this.route.params.subscribe((params: Params) => this.loadMarkers(params));
     }

@@ -2,7 +2,9 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {Http, Response} from '@angular/http';
+import {Http, RequestOptionsArgs, Response} from '@angular/http';
+import {ResponseContentType} from '@angular/http/src/enums';
+
 
 export class User {
     constructor(public id: number,
@@ -15,7 +17,6 @@ export class User {
 @Injectable()
 export class UserService {
     private userUrl = 'http://localhost:8000/api/v1/';
-    private currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
     constructor(private http: Http) {
     }
@@ -35,9 +36,9 @@ export class UserService {
     }
 
     updateUser(user: User) {
-
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         const reqData = {
-            "token": this.currentUser.token,
+            "token": currentUser.token,
             "id": user.id,
             "data": {
                 "age": user.age,
@@ -51,16 +52,11 @@ export class UserService {
     }
 
     deleteUser(user: User) {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         const reqData = {
-            "token": this.currentUser.token,
-            "id": user.id,
-            "data": {
-                "name": user.name,
-                "age": user.age,
-                "occupation": user.occupation,
-            }
+            "token": currentUser.token,
+            "id": user.id
         };
-        console.log(reqData);
 
         return this.http.delete(`${this.userUrl}users/`, reqData)
             .map((res: Response) => res.json())
